@@ -17,7 +17,7 @@ class EjemplarController
     public function store(): void
     {
         if (!(Login::isAdmin() || Login::hasPrivilege(500)))
-        throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
 
         if (empty($_POST['guardar']))
             throw new Exception('No se recibieron datos');

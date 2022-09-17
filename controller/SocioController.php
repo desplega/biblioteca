@@ -153,4 +153,24 @@ class SocioController
         $mensaje = "Borrado del socio $id correcto.";
         include '../views/exito.php';
     }
+
+    public function search()
+    {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
+        if (empty($_POST['buscar'])) {
+            $this->list();
+            return;
+        }
+
+        $campo = $_POST['campo'];
+        $valor = $_POST['valor'];
+        $orden = $_POST['orden'];
+        $sentido = $_POST['sentido'] ?? 'ASC';
+
+        $socios = Socio::getFiltered($campo, $valor, $orden, $sentido);
+
+        require_once '../views/socio/lista.php';
+    }
 }

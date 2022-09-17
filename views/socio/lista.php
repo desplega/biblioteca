@@ -13,6 +13,39 @@
     <?php include '../views/components/login.php'; ?>
 
     <h2>Lista de socios</h2>
+
+    <form method="post" action="/socio/search">
+        <label>Campo:</label>
+        <select name="campo">
+            <option value="nombre" <?= !empty($campo) && $campo == 'nombre' ? ' selected' : '' ?>>Nombre</option>
+            <option value="apellidos" <?= !empty($campo) && $campo == 'apellidos' ? ' selected' : '' ?>>Apellidos</option>
+            <option value="dni" <?= !empty($campo) && $campo == 'dni' ? ' selected' : '' ?>>DNI</option>
+            <option value="poblacion" <?= !empty($campo) && $campo == 'poblacion' ? ' selected' : '' ?>>Población</option>
+            <option value="telefono" <?= !empty($campo) && $campo == 'telefono' ? ' selected' : '' ?>>Teléfono</option>
+        </select>
+
+        <label>Valor:</label>
+        <input type="text" name="valor" value="<?= $valor ?? '' ?>">
+
+        <select name="orden">
+            <option value="nombre" <?= !empty($campo) && $campo == 'nombre' ? ' selected' : '' ?>>Nombre</option>
+            <option value="apellidos" <?= !empty($campo) && $campo == 'apellidos' ? ' selected' : '' ?>>Apellidos</option>
+            <option value="dni" <?= !empty($campo) && $campo == 'dni' ? ' selected' : '' ?>>DNI</option>
+            <option value="poblacion" <?= !empty($campo) && $campo == 'poblacion' ? ' selected' : '' ?>>Población</option>
+            <option value="telefono" <?= !empty($campo) && $campo == 'telefono' ? ' selected' : '' ?>>Teléfono</option>
+        </select>
+
+        <input type="radio" name="sentido" value="ASC" <?= (empty($sentido) || $sentido == 'ASC') ? ' checked' : '' ?>>
+        <label>Ascendente</label>
+
+        <input type="radio" name="sentido" value="DESC" <?= (!empty($sentido) && $sentido == 'DESC') ? ' checked' : '' ?>>
+        <label>Descendente</label>
+
+        <input type="submit" name="buscar" value="Buscar">
+    </form>
+
+    <a href="/libro">Quitar filtros</a><br><br>
+
     <table border="1">
         <tr>
             <th>DNI</th>
