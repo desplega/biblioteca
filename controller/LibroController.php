@@ -31,11 +31,17 @@ class LibroController
 
     public function create()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         include '../views/libro/nuevo.php';
     }
 
     public function store()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['guardar']))
             throw new Exception('No se recibieron datos');
 
@@ -57,6 +63,9 @@ class LibroController
 
     public function edit(int $id = 0)
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception('No se indicó el libro');
 
@@ -74,6 +83,9 @@ class LibroController
 
     public function update()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['actualizar']))
             throw new Exception('No se recibieron datos');
 
@@ -103,6 +115,9 @@ class LibroController
 
     public function delete(int $id = 0)
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception('No se indicó el libro a borrar');
 
@@ -116,6 +131,9 @@ class LibroController
 
     public function destroy()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['borrar']))
             throw new Exception('No se recibió confirmación');
 
@@ -130,12 +148,15 @@ class LibroController
 
     public function addTema()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['add']))
             throw new Exception('No hay datos en el formulario');
 
         $idlibro = intval($_POST['idlibro']);
         $idtema = intval($_POST['idtema']);
-        
+
         try {
             $libro = Libro::getById($idlibro);
             $libro->addTema($idtema);
@@ -149,12 +170,15 @@ class LibroController
 
     public function removeTema()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['remove']))
             throw new Exception('No hay datos en el formulario');
 
         $idlibro = intval($_POST['idlibro']);
         $idtema = intval($_POST['idtema']);
-        
+
         try {
             $libro = Libro::getById($idlibro);
             $libro->removeTema($idtema);

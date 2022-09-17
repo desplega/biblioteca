@@ -10,6 +10,7 @@
 <body>
     <h1>Usuarios de la biblioteca</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Lista de usuarios</h2>
     <table border="1">

@@ -10,7 +10,7 @@
 <body>
 	<h1>Portada</h1>
 	<?php include '../views/components/menu.php'; ?>
-	<?php include '../views/components/login.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
 	<h2>Bienvenido a nuestra aplicación</h2>
 	<p>Esta es una aplicación de prueba para comprender el MVC.</p>

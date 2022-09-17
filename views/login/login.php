@@ -17,11 +17,10 @@
         <label>Usuario o email</label>
         <input type="text" name="usuario" required><br>
         <label>Contraseña</label>
-        <input type="text" name="clave" required><br>
+        <input type="password" name="clave" required><br>
 
         <input type="submit" name="identificar" value="Identificarse">
     </form>
-    <a href="/tema/list">Volver al listado</a>
 
 </body>
 

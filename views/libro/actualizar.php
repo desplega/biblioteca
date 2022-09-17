@@ -11,6 +11,7 @@
     <h1>Actualizar libro</h1>
     <h2><?= $libro->titulo ?></h2>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Formulario de edición</h2>
     <?= empty($GLOBALS['success']) ? "" : "<p style='color:#060'>" . $GLOBALS['success'] . "</p>" ?>

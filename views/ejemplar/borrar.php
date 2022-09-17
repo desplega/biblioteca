@@ -10,6 +10,7 @@
 <body>
     <h1>Borrado de ejemplar</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Confirmar borrado</h2>
     <p>Estás a punto de borrar el ejemplar con ID <?= $ejemplar->id ?> del libro "<?= $libro->titulo ?>".</p>

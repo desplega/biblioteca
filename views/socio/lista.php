@@ -10,6 +10,7 @@
 <body>
     <h1>Socios de la biblioteca</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Lista de socios</h2>
     <table border="1">

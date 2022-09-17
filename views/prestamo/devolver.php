@@ -10,6 +10,7 @@
 <body>
     <h1>Confirmar devolución</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Confirmar devolución del ejemplar con ID <?= $prestamo->idejemplar?></h2>
 

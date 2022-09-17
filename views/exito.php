@@ -10,6 +10,7 @@
 <body>
 	<h1>Éxito</h1>
 	<?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
 	<h2>Éxito en la operación solicitada</h2>
 

@@ -10,6 +10,7 @@
 <body>
     <h1>Actualizar préstamo</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Formulario de edición</h2>
     <?= empty($GLOBALS['success']) ? "" : "<p style='color:#060'>" . $GLOBALS['success'] . "</p>" ?>

@@ -3,6 +3,9 @@ class PrestamoController
 {
     public function create(int $idsocio): void
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         $socio = Socio::getById($idsocio);
 
         // This method is called from biblioteca/show and biblioteca/show/{id}
@@ -16,6 +19,9 @@ class PrestamoController
 
     public function store()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$_POST['guardar'])
             throw new Exception('No hay datos a guardar');
 
@@ -37,6 +43,9 @@ class PrestamoController
 
     public function edit(int $idprestamo)
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         $prestamo = Prestamo::getById($idprestamo);
         $socio = Socio::getById($prestamo->idsocio);
         include '../views/prestamo/actualizar.php';
@@ -44,16 +53,42 @@ class PrestamoController
 
     public function update()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
+        if (!$_POST['actualizar'])
+            throw new Exception('No hay datos a guardar');
+
+        $id = intval($_POST['id']);
+        $fecha = $_POST['limite'];
+
+        $prestamo = Prestamo::getById($id);
+        $prestamo->limite = date('Y-m-d H:i:s', strtotime($fecha));
+
+        try {
+            $prestamo->actualizar();
+            $GLOBALS['success'] = 'Se ha actualizado la fecha límite del préstamo';
+        } catch (Throwable $e) {
+            $GLOBALS['error'] = 'No se ha podido actualizar la fecha límite del préstamo';
+        } finally {
+            (new SocioController)->show($prestamo->idsocio);
+        }
     }
 
     public function return(int $idprestamo)
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         $prestamo = Prestamo::getById($idprestamo);
         include '../views/prestamo/devolver.php';
     }
 
     public function mark()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$_POST['devolver'])
             throw new Exception('No se puede realizar la devolución');
 

@@ -9,12 +9,18 @@ class SocioController
 
     public function list()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         $socios = Socio::get();
         include '../views/socio/lista.php';
     }
 
     public function show(int $id = 0)
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception("No se indicó el socio");
 
@@ -30,11 +36,17 @@ class SocioController
 
     public function create()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         include '../views/socio/nuevo.php';
     }
 
     public function store()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['guardar']))
             throw new Exception('No se recibieron datos');
 
@@ -60,6 +72,9 @@ class SocioController
 
     public function edit(int $id = 0)
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception('No se indicó el socio');
 
@@ -73,6 +88,9 @@ class SocioController
 
     public function update()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['actualizar']))
             throw new Exception('No se recibieron datos');
 
@@ -105,6 +123,9 @@ class SocioController
 
     public function delete(int $id = 0)
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception('No se indicó el socio a borrar');
 
@@ -112,18 +133,21 @@ class SocioController
 
         if (!$socio)
             throw new Exception("No existe el socio con identificador $id");
-        
+
         include '../views/socio/borrar.php';
     }
 
     public function destroy()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['borrar']))
             throw new Exception('No se recibió confirmación');
 
         $id = intval($_POST['id']);
 
-        if (Socio::borrar($id)===false)
+        if (Socio::borrar($id) === false)
             throw new Exception('No se pudo borrar');
 
         $mensaje = "Borrado del socio $id correcto.";

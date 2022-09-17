@@ -10,12 +10,14 @@
 <body>
     <h1>Temas de la biblioteca</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Lista de temas</h2>
     <table border="1">
         <tr>
             <th>Tema</th>
             <th>Descripción</th>
+            <th>Operaciones</th>
         </tr>
         <?php
         foreach ($temas as $tema) {

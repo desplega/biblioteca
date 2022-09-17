@@ -10,6 +10,7 @@
 <body>
     <h1>Detalles</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Detalles del libro</h2>
     <h3><?= $libro->titulo ?></h3>
@@ -21,19 +22,6 @@
     <p><b>Idioma:</b> <?= $libro->idioma ?></p>
     <p><b>Ediciones:</b> <?= $libro->ediciones ?></p>
     <p><b>Edad Recomendada:</b> <?= $libro->edadrecomendada ?></p>
-
-    <h2>Ejemplares</h2>
-    <?php
-    if ($ejemplares) {
-        echo '<ul>';
-        foreach ($ejemplares as $ejemplar) {
-            echo "<li>$ejemplar</li>";
-        }
-        echo '</ul>';
-    } else {
-        echo '<p>No hay ejemplares de este libro</p>';
-    }
-    ?>
 
     <h2>Temas del libro</h2>
     <?php
@@ -48,8 +36,25 @@
     }
     ?>
 
-    <a href="/libro/edit/<?= $libro->id ?>">Editar libro</a>
-    <a href="/libro/delete/<?= $libro->id ?>">Borrar libro</a>
+    <h2>Ejemplares</h2>
+    <?php
+    if ($ejemplares) {
+        echo '<ul>';
+        foreach ($ejemplares as $ejemplar) {
+            echo "<li>$ejemplar</li>";
+        }
+        echo '</ul>';
+    } else {
+        echo '<p>No hay ejemplares de este libro</p>';
+    }
+    ?>
+
+    <?php
+    if (Login::isAdmin() || Login::hasPrivilege(500)) {
+        echo "<a href='/libro/edit/$libro->id'>Editar libro</a>";
+        echo "<a href='/libro/delete/$libro->id'>Borrar libro</a>";
+    }
+    ?>
     <a href="/libro/list">Lista de libros</a>
 </body>
 

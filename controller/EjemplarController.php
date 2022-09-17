@@ -3,6 +3,9 @@ class EjemplarController
 {
     public function create(int $idlibro): void
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         $libro = Libro::getById($idlibro);
 
         if (!$libro)
@@ -13,6 +16,9 @@ class EjemplarController
 
     public function store(): void
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+        throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['guardar']))
             throw new Exception('No se recibieron datos');
 
@@ -35,6 +41,9 @@ class EjemplarController
 
     public function delete(int $id = 0): void
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception('No se indicó el ejemplar a borrar');
 
@@ -56,6 +65,9 @@ class EjemplarController
 
     public function destroy(): void
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['borrar']))
             throw new Exception('No se recibió confirmación');
 

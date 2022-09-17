@@ -8,12 +8,18 @@ class UsuarioController
 
     public function list()
     {
+        if (!Login::isAdmin())
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         $usuarios = Usuario::get();
         include '../views/usuario/lista.php';
     }
 
     public function show(int $id = 0)
     {
+        if (Login::get()->id != $id)
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception("No se indicó el usuario");
 
@@ -27,11 +33,17 @@ class UsuarioController
 
     public function create()
     {
+        if (!Login::isAdmin())
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         include '../views/usuario/nuevo.php';
     }
 
     public function store()
     {
+        if (!Login::isAdmin())
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['guardar']))
             throw new Exception('No se recibieron datos');
 
@@ -54,6 +66,9 @@ class UsuarioController
 
     public function edit(int $id = 0)
     {
+        if (!Login::isAdmin())
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception('No se indicó el usuario');
 
@@ -67,6 +82,9 @@ class UsuarioController
 
     public function update()
     {
+        if (!Login::isAdmin())
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['actualizar']))
             throw new Exception('No se recibieron datos');
 
@@ -85,7 +103,7 @@ class UsuarioController
         $usuario->administrador = $_POST['administrador'] ?? 0;
         $usuario->email = $_POST['email'];
         $usuario->updated_at = date('Y-m-d H:i:s');
-        
+
         try {
             $usuario->actualizar();
             $GLOBALS['success'] = "Actualización del usuario \"$usuario->nombre $usuario->apellido1\" correcta.";
@@ -98,6 +116,9 @@ class UsuarioController
 
     public function delete(int $id = 0)
     {
+        if (!Login::isAdmin())
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception('No se indicó el usuario a borrar');
 
@@ -105,18 +126,21 @@ class UsuarioController
 
         if (!$usuario)
             throw new Exception("No existe el usuario con identificador $id");
-        
+
         include '../views/usuario/borrar.php';
     }
 
     public function destroy()
     {
+        if (!Login::isAdmin())
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['borrar']))
             throw new Exception('No se recibió confirmación');
 
         $id = intval($_POST['id']);
 
-        if (Usuario::borrar($id)===false)
+        if (Usuario::borrar($id) === false)
             throw new Exception('No se pudo borrar');
 
         $mensaje = "Borrado del usuario $id correcto.";

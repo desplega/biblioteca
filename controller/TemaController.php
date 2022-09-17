@@ -8,12 +8,18 @@ class TemaController
 
     public function list()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         $temas = Tema::get();
         include '../views/tema/lista.php';
     }
 
     public function show(int $id = 0)
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception("No se indicó el tema");
 
@@ -27,11 +33,17 @@ class TemaController
 
     public function create()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         include '../views/tema/nuevo.php';
     }
 
     public function store()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['guardar']))
             throw new Exception('No se recibieron datos');
 
@@ -48,6 +60,9 @@ class TemaController
 
     public function edit(int $id = 0)
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception('No se indicó el tema');
 
@@ -61,6 +76,9 @@ class TemaController
 
     public function update()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['actualizar']))
             throw new Exception('No se recibieron datos');
 
@@ -85,6 +103,9 @@ class TemaController
 
     public function delete(int $id = 0)
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (!$id)
             throw new Exception('No se indicó el tema a borrar');
 
@@ -98,6 +119,9 @@ class TemaController
 
     public function destroy()
     {
+        if (!(Login::isAdmin() || Login::hasPrivilege(500)))
+            throw new Exception('No tienes permisos de acceso para realizar esta acción.');
+
         if (empty($_POST['borrar']))
             throw new Exception('No se recibió confirmación');
 

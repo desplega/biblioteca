@@ -10,6 +10,7 @@
 <body>
     <h1>Detalles</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Detalles del tema</h2>
     <h3><?= $tema->tema ?></h3>

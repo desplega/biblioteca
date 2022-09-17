@@ -10,6 +10,7 @@
 <body>
     <h1>Libros de la biblioteca</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Lista de libros</h2>
     <table border="1">
@@ -27,8 +28,10 @@
             echo "<td>$libro->editorial</td>";
             echo "<td>";
             echo " <a href='/libro/show/$libro->id'>V</a>";
-            echo " - <a href='/libro/edit/$libro->id'>E</a>";
-            echo " - <a href='/libro/delete/$libro->id'>B</a>";
+            if (Login::isAdmin() || Login::hasPrivilege(500)) {
+                echo " - <a href='/libro/edit/$libro->id'>E</a>";
+                echo " - <a href='/libro/delete/$libro->id'>B</a>";
+            }
             echo "</td>";
             echo "</tr>";
         }

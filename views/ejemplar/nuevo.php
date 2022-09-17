@@ -10,6 +10,7 @@
 <body>
     <h1>Nuevo ejemplar</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Nuevo ejemplar</h2>
     <p>Vas a crear un nuevo ejemplar del libro <?= $libro->titulo ?></p>

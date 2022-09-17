@@ -10,6 +10,7 @@
 <body>
     <h1>Nuevo libro</h1>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Nuevo libro</h2>
     <form method="post" action="/libro/store">

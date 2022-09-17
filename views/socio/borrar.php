@@ -11,6 +11,7 @@
     <h1>Confirmar borrado</h1>
     <h2><?= $socio->nombre . ' ' . $socio->apellidos ?></h2>
     <?php include '../views/components/menu.php'; ?>
+    <?php include '../views/components/login.php'; ?>
 
     <h2>Formulario de confirmación</h2>
 
