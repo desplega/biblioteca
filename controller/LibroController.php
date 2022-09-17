@@ -189,4 +189,21 @@ class LibroController
             $this->edit($idlibro);
         }
     }
+
+    public function search()
+    {
+        if (empty($_POST['buscar'])) {
+            $this->list();
+            return;
+        }
+
+        $campo = $_POST['campo'];
+        $valor = $_POST['valor'];
+        $orden = $_POST['orden'];
+        $sentido = $_POST['sentido'] ?? 'ASC';
+
+        $libros = Libro::getFiltered($campo, $valor, $orden, $sentido);
+
+        require_once '../views/libro/lista.php';
+    }
 }

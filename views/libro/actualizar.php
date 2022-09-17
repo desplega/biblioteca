@@ -56,7 +56,7 @@
     <?php
     if ($lista_temas) {
     ?>
-        <form method="POST" action="/libro/addTema">
+        <form method="post" action="/libro/addTema">
             <input type="hidden" name="idlibro" value="<?=$libro->id?>">
             <label for="idtema">Selecciona un tema: </label>
             <select name="idtema">
