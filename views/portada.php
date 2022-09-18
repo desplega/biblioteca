@@ -2,18 +2,57 @@
 <html lang="es">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Portada - <?= APP_TITLE ?></title>
-	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Biblioteca</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-	<h1>Portada</h1>
-	<?php include '../views/components/menu.php'; ?>
-    <?php include '../views/components/login.php'; ?>
+    <div class="grid-container">
 
-	<h2>Bienvenido a nuestra aplicación</h2>
-	<p>Esta es una aplicación de prueba para comprender el MVC.</p>
+        <?php
+        include 'components/header.php';
+        include 'components/sidebar.php';
+        ?>
+
+        <!-- Main -->
+        <main class="main-container">
+            <div class="main-title">
+                <p class="font-weight-bold">APLICACIÓN BIBLIOTECA</p>
+            </div>
+
+            <div class="charts">
+                <div class="charts-card">
+                    <p class="chart-title">Bienvenid@ a nuestra aplicación</p>
+                    <div>
+                        <p>Esta es una aplicación de prueba para comprender el MVC.</p>
+                        <p>Como <b>Socio</b>, sin logearte, puedes ver un listado de los libros de los que disponemos en nuestra fantástica biblioteca.</p>
+                        <p>Deberás logearte como <b>Bibliotecario</b> para acceder a la lista de temas, socios y gestionar préstamos.</p>
+                        <p>También puedes entrar como <b>Administrador</b> para, además, gestionar los usuarios.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-centered">
+                <p>Aplicación Biblioteca <?= date('Y') ?></p>
+                <p>Marcel@CIFO Sabadell</p>
+            </div>
+        </main>
+        <!-- End Main -->
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>

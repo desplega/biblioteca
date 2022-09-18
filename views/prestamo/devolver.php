@@ -2,25 +2,68 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Confirmar devolución del ejemplar "<?= $prestamo->idejemplar ?>" - <?= APP_TITLE ?></title>
-    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1>Confirmar devolución</h1>
-    <?php include '../views/components/menu.php'; ?>
-    <?php include '../views/components/login.php'; ?>
+    <div class="grid-container">
 
-    <h2>Confirmar devolución del ejemplar con ID <?= $prestamo->idejemplar?></h2>
+        <?php
+        include '../views/components/header.php';
+        include '../views/components/sidebar.php';
+        ?>
 
-    <form method="post" action="/prestamo/mark">
-        <p style="display:inline">Marcar el préstamo del ejemplar con ID <?= $prestamo->idejemplar ?> como devuelto.</p>
+        <!-- Main -->
+        <main class="main-container">
+            <div class="main-title">
+                <p class="font-weight-bold">Confirmar devolución</p>
+            </div>
 
-        <input type="hidden" name="idprestamo" value="<?= $prestamo->id ?>">
-        <input type="submit" name="devolver" value="Devolver">
-    </form>
-    <a href="/socio/show/<?=$prestamo->idsocio?>">Atrás</a>
+            <div class="main-cards">
+                <div class="card card-blue">
+                    <div class="card-inner">
+                        <p class="text-primary"><?= $GLOBALS['success-title'] ?? 'CONFIRMACIÓN' ?></p>
+                        <span class="material-icons-outlined text-blue">danger</span>
+                    </div>
+                    <span class="text-primary font-weight-bold">
+                        <form method="post" action="/prestamo/mark">
+                            <p>Marcar el préstamo del ejemplar con ID <?= $prestamo->idejemplar ?> como devuelto.</p>
+
+                            <input type="hidden" name="idprestamo" value="<?= $prestamo->id ?>">
+                            <input type="submit" name="devolver" value="Devolver">
+                        </form>
+                    </span>
+                </div>
+            </div>
+
+            <div class="charts">
+                <div class="charts-card">
+                    <a class="nav-link" href="/socio/show/<?= $prestamo->idsocio ?>">Atrás</a>
+                </div>
+            </div>
+
+            <div class="footer-centered">
+                <p>Aplicación Biblioteca <?= date('Y') ?></p>
+                <p>Marcel@CIFO Sabadell</p>
+            </div>
+        </main>
+        <!-- End Main -->
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="/js/scripts.js"></script>
 </body>
 
 </html>

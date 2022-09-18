@@ -2,28 +2,72 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Confirmar borrado de "<?= $ejemplar->id ?>" - <?= APP_TITLE ?></title>
-    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1>Borrado de ejemplar</h1>
-    <?php include '../views/components/menu.php'; ?>
-    <?php include '../views/components/login.php'; ?>
+    <div class="grid-container">
 
-    <h2>Confirmar borrado</h2>
-    <p>Estás a punto de borrar el ejemplar con ID <?= $ejemplar->id ?> del libro "<?= $libro->titulo ?>".</p>
-    <p>Se trata de un ejemplar de la edición número <?= $ejemplar->edicion ?> del año <?= $ejemplar->anyo ?>, que ha costado <?= $ejemplar->precio ?>€.</p>
+        <?php
+        include '../views/components/header.php';
+        include '../views/components/sidebar.php';
+        ?>
 
-    <form method="post" action="/ejemplar/destroy">
-        <p style="display:inline">Confirmar el borrado del ejemplar</p>
+        <!-- Main -->
+        <main class="main-container">
+            <div class="main-title">
+                <p class="font-weight-bold">Borrado de ejemplar</p>
+            </div>
 
-        <input type="hidden" name="id" value="<?= $ejemplar->id ?>">
-        <input type="hidden" name="idlibro" value="<?= $libro->id ?>">
-        <input type="submit" name="borrar" value="Borrar">
-    </form>
-    <a href="/libro/edit/<?= $libro->id ?>">Atrás</a>
+            <div class="main-cards">
+                <div class="card card-orange">
+                    <div class="card-inner">
+                        <p class="text-primary"><?= $GLOBALS['success-title'] ?? '¡AVISO!' ?></p>
+                        <span class="material-icons-outlined text-orange">danger</span>
+                    </div>
+                    <span class="text-primary font-weight-bold">
+                        <p>Estás a punto de borrar el ejemplar con ID <?= $ejemplar->id ?> del libro "<?= $libro->titulo ?>".</p>
+                        <p>Se trata de un ejemplar de la edición número <?= $ejemplar->edicion ?> del año <?= $ejemplar->anyo ?>, que ha costado <?= $ejemplar->precio ?>€.</p>
+
+                        <form method="post" action="/ejemplar/destroy">
+                            <p>Confirmar el borrado del ejemplar</p>
+
+                            <input type="hidden" name="id" value="<?= $ejemplar->id ?>">
+                            <input type="hidden" name="idlibro" value="<?= $libro->id ?>">
+                            <input type="submit" name="borrar" value="Borrar">
+                        </form>
+                    </span>
+                </div>
+            </div>
+
+            <div class="charts">
+                <div class="charts-card">
+                    <a class="nav-link" href="/libro/edit/<?= $libro->id ?>">Atrás</a>
+                </div>
+            </div>
+
+            <div class="footer-centered">
+                <p>Aplicación Biblioteca <?= date('Y') ?></p>
+                <p>Marcel@CIFO Sabadell</p>
+            </div>
+        </main>
+        <!-- End Main -->
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="/js/scripts.js"></script>
 </body>
 
 </html>

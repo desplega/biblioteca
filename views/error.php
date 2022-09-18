@@ -2,20 +2,61 @@
 <html lang="es">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Error - <?= APP_TITLE ?></title>
-	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Error - <?= APP_TITLE ?></title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-	<h1>Error</h1>
-	<?php include '../views/components/menu.php'; ?>
-    <?php include '../views/components/login.php'; ?>
+    <div class="grid-container">
 
-	<h2>Error en la operación solicitada</h2>
+        <?php
+        include '../views/components/header.php';
+        include '../views/components/sidebar.php';
+        ?>
 
-	<p class='error'><?= $mensaje ?></p>
+        <!-- Main -->
+        <main class="main-container">
+            <div class="main-title">
+                <p class="font-weight-bold">Error en la operación solicitada</p>
+            </div>
 
+            <div class="main-cards">
+                <div class="card card-red">
+                    <div class="card-inner">
+                        <p class="text-primary"><?= $GLOBALS['success-title'] ?? '¡ERROR!' ?></p>
+                        <span class="material-icons-outlined text-red">error</span>
+                    </div>
+                    <span class="text-primary font-weight-bold"><?= $mensaje ?></span>
+                </div>
+            </div>
+
+            <div class="charts">
+                <div class="charts-card">
+                    <a class="nav-link" href="/">Volver al inicio</a>
+                </div>
+            </div>
+
+            <div class="footer-centered">
+                <p>Aplicación Biblioteca <?= date('Y') ?></p>
+                <p>Marcel@CIFO Sabadell</p>
+            </div>
+        </main>
+        <!-- End Main -->
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="/js/scripts.js"></script>
 </body>
 
 </html>

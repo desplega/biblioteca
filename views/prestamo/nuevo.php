@@ -2,30 +2,64 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Nuevo préstamo - <?= APP_TITLE ?></title>
-    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1>Nuevo préstamo</h1>
-    <?php include '../views/components/menu.php'; ?>
-    <?php include '../views/components/login.php'; ?>
+    <div class="grid-container">
 
-    <h2>Nuevo préstamo a <?= $socio->nombre . ' ' . $socio->apellidos ?></h2>
-    <form method="post" action="/prestamo/store">
-        <input type="hidden" name="idsocio" value="<?= $socio->id ?>">
-        <label for="idejemplar">Introduce el ID del ejemplar</label>
-        <input type="text" name="idejemplar"><br>
+        <?php
+        include '../views/components/header.php';
+        include '../views/components/sidebar.php';
+        ?>
 
-        <input type="submit" name="guardar" value="Guardar">
-    </form>
-    <?php
-    if (isset($back_to_show))
-        echo "<a href='/socio/show/$socio->id'>Atrás</a>";
-    else
-        echo "<a href='/socio/list'>Atrás</a>";
-    ?>
+        <!-- Main -->
+        <main class="main-container">
+            <div class="main-title">
+                <p class="font-weight-bold">Nuevo préstamo</p>
+            </div>
+
+            <div class="charts">
+                <div class="charts-card">
+                    <p class="chart-title">Nuevo préstamo a <?= $socio->nombre . ' ' . $socio->apellidos ?></p>
+                    <div>
+                        <form method="post" action="/prestamo/store">
+                            <input class="full-width" type="hidden" name="idsocio" value="<?= $socio->id ?>">
+                            <label for="idejemplar">Introduce el ID del ejemplar</label>
+                            <input class="full-width" type="text" name="idejemplar"><br>
+
+                            <input type="submit" name="guardar" value="Guardar">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="charts-card">
+                    <a class="nav-link" href="/socio/<?= isset($back_to_show) ? ('show/' . $socio->id) : 'list' ?>">Atrás</a>
+                </div>
+            </div>
+
+            <div class="footer-centered">
+                <p>Aplicación Biblioteca <?= date('Y') ?></p>
+                <p>Marcel@CIFO Sabadell</p>
+            </div>
+        </main>
+        <!-- End Main -->
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="/js/scripts.js"></script>
 </body>
 
 </html>

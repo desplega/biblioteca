@@ -17,7 +17,7 @@ class UsuarioController
 
     public function show(int $id = 0)
     {
-        if (Login::get()->id != $id)
+        if (!Login::isAdmin() && (Login::get()->id != $id))
             throw new Exception('No tienes permisos de acceso para realizar esta acción.');
 
         if (!$id)

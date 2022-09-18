@@ -2,41 +2,79 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Nuevo usuario - <?= APP_TITLE ?></title>
-    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1>Nuevo usuario</h1>
-    <?php include '../views/components/menu.php'; ?>
-    <?php include '../views/components/login.php'; ?>
+    <div class="grid-container">
 
-    <h2>Nuevo usuario</h2>
-    <form method="post" action="/usuario/store">
-        <label>Usuario</label>
-        <input type="text" name="usuario"><br>
-        <label>Contraseña</label>
-        <input type="password" name="clave"><br>
-        <label>Nombre</label>
-        <input type="text" name="nombre"><br>
-        <label>Primer apellido</label>
-        <input type="text" name="apellido1"><br>
-        <label>Segundo apellido</label>
-        <input type="text" name="apellido2"><br>
-        <label>Correo electrónico</label>
-        <input type="email" name="email"><br>
+        <?php
+        include '../views/components/header.php';
+        include '../views/components/sidebar.php';
+        ?>
 
-        <h3>Operaciones solo para el admin</h3>
-        <label>Privilegio</label>
-        <input type="number" min="0" max="9999" name="privilegio" value="0"><br>
-        <input type="checkbox" id="administrador" name="administrador">
+        <!-- Main -->
+        <main class="main-container">
+            <div class="main-title">
+                <p class="font-weight-bold">Nuevo usuario</p>
+            </div>
 
-        <label for="administrador">Dar permisos de administrador</label><br>
-        <input type="submit" name="guardar" value="Guardar">
-    </form>
-    <a href="/usuario/list">Volver al listado</a>
+            <div class="charts">
+                <div class="charts-card">
+                    <p class="chart-title">Datos del usuario</p>
+                    <div>
+                        <form method="post" action="/usuario/store">
+                            <label>Usuario</label>
+                            <input class="full-width" type="text" name="usuario"><br>
+                            <label>Contraseña</label>
+                            <input class="full-width" type="password" name="clave"><br>
+                            <label>Nombre</label>
+                            <input class="full-width" type="text" name="nombre"><br>
+                            <label>Primer apellido</label>
+                            <input class="full-width" type="text" name="apellido1"><br>
+                            <label>Segundo apellido</label>
+                            <input class="full-width" type="text" name="apellido2"><br>
+                            <label>Correo electrónico</label>
+                            <input class="full-width" type="email" name="email"><br>
 
+                            <h3>Operaciones solo para el admin</h3>
+                            <label>Privilegio</label>
+                            <input class="full-width" type="number" min="0" max="9999" name="privilegio" value="0"><br>
+                            <input type="checkbox" id="administrador" name="administrador">
+                            <label for="administrador">Dar permisos de administrador</label><br>
+
+                            <input type="submit" name="guardar" value="Guardar">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="charts-card">
+                    <a class="nav-link" href="/usuario/list">Volver al listado</a>
+                </div>
+            </div>
+
+            <div class="footer-centered">
+                <p>Aplicación Biblioteca <?= date('Y') ?></p>
+                <p>Marcel@CIFO Sabadell</p>
+            </div>
+        </main>
+        <!-- End Main -->
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="/js/scripts.js"></script>
 </body>
 
 </html>
