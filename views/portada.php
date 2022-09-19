@@ -35,6 +35,8 @@
                     <p class="chart-title">Bienvenid@ a nuestra aplicación</p>
                     <div>
                         <p>Esta es una aplicación de prueba para comprender el MVC.</p>
+                        <img class="welcome" src="/images/trinity-college.jpg"/>
+                        <p><b>Instrucciones</b></p>
                         <p>Como <b>Socio</b>, sin logearte, puedes ver un listado de los libros de los que disponemos en nuestra fantástica biblioteca.</p>
                         <p>Deberás logearte como <b>Bibliotecario</b> para acceder a la lista de temas, socios y gestionar préstamos.</p>
                         <p>También puedes entrar como <b>Administrador</b> para, además, gestionar los usuarios.</p>

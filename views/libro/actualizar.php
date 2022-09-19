@@ -128,7 +128,7 @@
                             }
                             ?>
                         </select>
-                        <input class="cursor-pointer" type="submit" name="add" value="Añadir">
+                        <input class="cursor-pointer no-bold" type="submit" name="add" value="Añadir">
                     </form>
                 </div>
 
