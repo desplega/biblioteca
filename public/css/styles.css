@@ -1,3 +1,12 @@
+/*
+ * Plantilla basada en la Bob's Programming Academy Responsive Admin Dashboard
+ * https://github.com/BobsProgrammingAcademy/responsive-admin-dashboard
+ * Estilos añadidos:
+ *   Input, Select, Textarea
+ *   Table
+ *   Otros cambios como reducir el número de columnas del grid de 4 a 1
+ */
+
 body {
   margin: 0;
   padding: 0;
@@ -28,7 +37,7 @@ li {
 }
 
 .no-bold {
-  font-weight: 200;
+  font-weight: 400;
 }
 
 .material-icons-outlined {
@@ -263,7 +272,8 @@ input[type=number],
 input[type=password],
 input[type=email],
 input[type=date],
-select {
+select,
+textarea {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;

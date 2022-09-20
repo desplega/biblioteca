@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Nuevo tema - <?= APP_TITLE ?></title>
+    <title>Login - <?= APP_TITLE ?></title>
 
     <!-- Montserrat Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -20,38 +20,38 @@
     <div class="grid-container">
 
         <?php
-        include '../views/components/header.php';
-        include '../views/components/sidebar.php';
+        include 'components/header.php';
+        include 'components/sidebar.php';
         ?>
 
         <!-- Main -->
         <main class="main-container">
             <div class="main-title">
-                <p class="font-weight-bold">Nuevo tema</p>
+                <p class="font-weight-bold">Formulario de contacto</p>
             </div>
 
             <div class="charts">
                 <div class="charts-card">
-                    <p class="chart-title">Detalles del nuevo tema</p>
+                    <p class="chart-title">Introduce tus datos y tu consulta:</p>
                     <div>
-                        <form method="post" action="/tema/store">
-                            <label>Tema</label>
-                            <input class="full-width" type="text" name="tema"><br>
-                            <label>Descripción</label>
-                            <input class="full-width" type="text" name="descripcion"><br>
+                        <form method="post" action="/contacto/send">
+                            <label class="label-block">Correo electrónico</label>
+                            <input type="email" name="email" required><br>
+                            <label class="label-block">Nombre</label>
+                            <input type="text" name="nombre" required><br>
+                            <label class="label-block">Asunto</label>
+                            <input type="text" name="asunto" required><br>
+                            <label class="label-block">Mensaje</label>
+                            <textarea name="mensaje" cols="50" required></textarea><br>
 
-                            <input type="submit" name="guardar" value="Guardar">
+                            <input type="submit" name="enviar" value="Enviar">
                         </form>
                     </div>
-                </div>
-
-                <div class="charts-card">
-                    <a class="nav-link" href="/tema/list">Volver al listado</a>
                 </div>
             </div>
 
             <?php
-            include '../views/components/footer.php';
+            include 'components/footer.php';
             ?>
         </main>
         <!-- End Main -->

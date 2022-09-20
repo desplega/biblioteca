@@ -34,7 +34,7 @@
                 <div class="card card-orange">
                     <div class="card-inner">
                         <p class="text-primary"><?= $GLOBALS['success-title'] ?? '¡AVISO!' ?></p>
-                        <span class="material-icons-outlined text-orange">danger</span>
+                        <span class="material-icons-outlined text-orange">warning</span>
                     </div>
                     <span class="text-primary font-weight-bold">
                         <p>Estás a punto de borrar el ejemplar con ID <?= $ejemplar->id ?> del libro "<?= $libro->titulo ?>".</p>
@@ -57,10 +57,9 @@
                 </div>
             </div>
 
-            <div class="footer-centered">
-                <p>Aplicación Biblioteca <?= date('Y') ?></p>
-                <p>Marcel@CIFO Sabadell</p>
-            </div>
+            <?php
+            include '../views/components/footer.php';
+            ?>
         </main>
         <!-- End Main -->
 

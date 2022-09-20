@@ -20,8 +20,8 @@
     <div class="grid-container">
 
         <?php
-        include '../views/components/header.php';
-        include '../views/components/sidebar.php';
+        include 'components/header.php';
+        include 'components/sidebar.php';
         ?>
 
         <!-- Main -->
@@ -46,10 +46,9 @@
                 </div>
             </div>
 
-            <div class="footer-centered">
-                <p>Aplicación Biblioteca <?= date('Y') ?></p>
-                <p>Marcel@CIFO Sabadell</p>
-            </div>
+            <?php
+            include 'components/footer.php';
+            ?>
         </main>
         <!-- End Main -->
 

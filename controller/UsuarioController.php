@@ -55,7 +55,7 @@ class UsuarioController
         $usuario->apellido1 = $_POST['apellido1'];
         $usuario->apellido2 = $_POST['apellido2'];
         $usuario->privilegio = intval($_POST['privilegio']);
-        $usuario->administrador = $_POST['administrador'] ?? 0;
+        $usuario->administrador = $_POST['administrador'] ? 1 : 0;
         $usuario->email = $_POST['email'];
 
         $usuario->guardar();
@@ -100,7 +100,7 @@ class UsuarioController
         $usuario->apellido1 = $_POST['apellido1'];
         $usuario->apellido2 = $_POST['apellido2'];
         $usuario->privilegio = intval($_POST['privilegio']);
-        $usuario->administrador = $_POST['administrador'] ?? 0;
+        $usuario->administrador = $_POST['administrador'] ? 1 : 0;
         $usuario->email = $_POST['email'];
         $usuario->updated_at = date('Y-m-d H:i:s');
 

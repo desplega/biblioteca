@@ -46,10 +46,10 @@
                             <input type="text" name="valor" value="<?= $valor ?? '' ?>">
 
                             <select name="orden">
-                                <option value="titulo" <?= !empty($campo) && $campo == 'titulo' ? ' selected' : '' ?>>Título</option>
-                                <option value="isbn" <?= !empty($campo) && $campo == 'isbn' ? ' selected' : '' ?>>ISBN</option>
-                                <option value="editorial" <?= !empty($campo) && $campo == 'editorial' ? ' selected' : '' ?>>Editorial</option>
-                                <option value="autor" <?= !empty($campo) && $campo == 'autor' ? ' selected' : '' ?>>Autor</option>
+                                <option value="titulo" <?= !empty($orden) && $orden == 'titulo' ? ' selected' : '' ?>>Título</option>
+                                <option value="isbn" <?= !empty($orden) && $orden == 'isbn' ? ' selected' : '' ?>>ISBN</option>
+                                <option value="editorial" <?= !empty($orden) && $orden == 'editorial' ? ' selected' : '' ?>>Editorial</option>
+                                <option value="autor" <?= !empty($orden) && $orden == 'autor' ? ' selected' : '' ?>>Autor</option>
                             </select>
 
                             <input type="radio" name="sentido" value="ASC" <?= (empty($sentido) || $sentido == 'ASC') ? ' checked' : '' ?>>
@@ -99,10 +99,9 @@
                 </div>
             </div>
 
-            <div class="footer-centered">
-                <p>Aplicación Biblioteca <?= date('Y') ?></p>
-                <p>Marcel@CIFO Sabadell</p>
-            </div>
+            <?php
+            include '../views/components/footer.php';
+            ?>
         </main>
         <!-- End Main -->
 

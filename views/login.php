@@ -20,8 +20,8 @@
     <div class="grid-container">
 
         <?php
-        include '../views/components/header.php';
-        include '../views/components/sidebar.php';
+        include 'components/header.php';
+        include 'components/sidebar.php';
         ?>
 
         <!-- Main -->
@@ -32,7 +32,7 @@
 
             <div class="charts">
                 <div class="charts-card">
-                    <p class="chart-title">Introduce tu nombre de usario o correo electrónico y tu contraseña:</p>
+                    <p class="chart-title">Introduce tu nombre de usuario o correo electrónico y tu contraseña:</p>
                     <div>
                         <form method="post" action="/login/login">
                             <label class="label-block">Usuario o email</label>
@@ -46,10 +46,9 @@
                 </div>
             </div>
 
-            <div class="footer-centered">
-                <p>Aplicación Biblioteca <?= date('Y') ?></p>
-                <p>Marcel@CIFO Sabadell</p>
-            </div>
+            <?php
+            include 'components/footer.php';
+            ?>
         </main>
         <!-- End Main -->
 

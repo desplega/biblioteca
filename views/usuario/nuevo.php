@@ -51,7 +51,7 @@
                             <h3>Operaciones solo para el admin</h3>
                             <label>Privilegio</label>
                             <input class="full-width" type="number" min="0" max="9999" name="privilegio" value="0"><br>
-                            <input type="checkbox" id="administrador" name="administrador">
+                            <input type="checkbox" id="administrador" name="administrador" value="1">
                             <label for="administrador">Dar permisos de administrador</label><br>
 
                             <input type="submit" name="guardar" value="Guardar">
@@ -64,10 +64,9 @@
                 </div>
             </div>
 
-            <div class="footer-centered">
-                <p>Aplicación Biblioteca <?= date('Y') ?></p>
-                <p>Marcel@CIFO Sabadell</p>
-            </div>
+            <?php
+            include '../views/components/footer.php';
+            ?>
         </main>
         <!-- End Main -->
 

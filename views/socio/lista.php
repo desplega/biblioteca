@@ -47,11 +47,11 @@
                             <input type="text" name="valor" value="<?= $valor ?? '' ?>">
 
                             <select name="orden">
-                                <option value="nombre" <?= !empty($campo) && $campo == 'nombre' ? ' selected' : '' ?>>Nombre</option>
-                                <option value="apellidos" <?= !empty($campo) && $campo == 'apellidos' ? ' selected' : '' ?>>Apellidos</option>
-                                <option value="dni" <?= !empty($campo) && $campo == 'dni' ? ' selected' : '' ?>>DNI</option>
-                                <option value="poblacion" <?= !empty($campo) && $campo == 'poblacion' ? ' selected' : '' ?>>Población</option>
-                                <option value="telefono" <?= !empty($campo) && $campo == 'telefono' ? ' selected' : '' ?>>Teléfono</option>
+                                <option value="nombre" <?= !empty($orden) && $orden == 'nombre' ? ' selected' : '' ?>>Nombre</option>
+                                <option value="apellidos" <?= !empty($orden) && $orden == 'apellidos' ? ' selected' : '' ?>>Apellidos</option>
+                                <option value="dni" <?= !empty($orden) && $orden == 'dni' ? ' selected' : '' ?>>DNI</option>
+                                <option value="poblacion" <?= !empty($orden) && $orden == 'poblacion' ? ' selected' : '' ?>>Población</option>
+                                <option value="telefono" <?= !empty($orden) && $orden == 'telefono' ? ' selected' : '' ?>>Teléfono</option>
                             </select>
 
                             <input type="radio" name="sentido" value="ASC" <?= (empty($sentido) || $sentido == 'ASC') ? ' checked' : '' ?>>
@@ -99,10 +99,9 @@
                 </div>
             </div>
 
-            <div class="footer-centered">
-                <p>Aplicación Biblioteca <?= date('Y') ?></p>
-                <p>Marcel@CIFO Sabadell</p>
-            </div>
+            <?php
+            include '../views/components/footer.php';
+            ?>
         </main>
         <!-- End Main -->
 

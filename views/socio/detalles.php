@@ -112,10 +112,9 @@
                 </div>
             </div>
 
-            <div class="footer-centered">
-                <p>Aplicación Biblioteca <?= date('Y') ?></p>
-                <p>Marcel@CIFO Sabadell</p>
-            </div>
+            <?php
+            include '../views/components/footer.php';
+            ?>
         </main>
         <!-- End Main -->
 

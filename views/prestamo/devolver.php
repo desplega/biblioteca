@@ -34,7 +34,7 @@
                 <div class="card card-blue">
                     <div class="card-inner">
                         <p class="text-primary"><?= $GLOBALS['success-title'] ?? 'CONFIRMACIÓN' ?></p>
-                        <span class="material-icons-outlined text-blue">danger</span>
+                        <span class="material-icons-outlined text-blue">warning</span>
                     </div>
                     <span class="text-primary font-weight-bold">
                         <form method="post" action="/prestamo/mark">
@@ -53,10 +53,9 @@
                 </div>
             </div>
 
-            <div class="footer-centered">
-                <p>Aplicación Biblioteca <?= date('Y') ?></p>
-                <p>Marcel@CIFO Sabadell</p>
-            </div>
+            <?php
+            include '../views/components/footer.php';
+            ?>
         </main>
         <!-- End Main -->
 
